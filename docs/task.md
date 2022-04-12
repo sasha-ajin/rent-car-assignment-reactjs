@@ -1,7 +1,7 @@
-### Data
+## Data
 
 Your application must store the following information:
-##### Vehicle:
+#### Vehicle:
 
 - **Brand**
 
@@ -20,13 +20,13 @@ Your application must store the following information:
 
 - **Vehicle types** - economy, estate, luxury, SUV, cargo
 
-##### Customer:
+#### Customer:
 
 - Full name
 -  Email address
 - Phone number
 
-##### Rental event:
+#### Rental event:
 
 - Start date and time
 - End date and time
@@ -35,7 +35,7 @@ Your application must store the following information:
 
 
 
-### Tasks
+## Tasks
 
 - Create, read, update and delete vehicles
 - Create, read, update and delete customers
@@ -43,25 +43,25 @@ Your application must store the following information:
 
 
 
-### Business rules
+## Business rules
 
 When a vehicle is rented the number of available vehicles should be updated
 
-If the rental period is:
-More than 3 days - 5% discount
-More than 5 days - 7% discount
-More than 10 days - 10% discount
+If the rental period is: \
+More than 3 days - 5% discount \
+More than 5 days - 7% discount \
+More than 10 days - 10% discount \
 If a customer has rented a vehicle more than 3 times in the last 60 days, they would be designated as
 VIP customers and get a discount of 15%.
 
-### Technologies
+## Technologies
 
 - React
 - JSON Server
 
 
 
-### Criteria
+## Criteria
 
 - [Customers] Read feature
 - [Customers] Create feature
@@ -79,7 +79,7 @@ VIP customers and get a discount of 15%.
 - Naming Conventions
 - Code Reuse
 
-### Deliverables
+## Deliverables
 
 Application source code
 
