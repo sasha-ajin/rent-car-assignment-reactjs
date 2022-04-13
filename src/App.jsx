@@ -1,9 +1,10 @@
-import Navbar from "./components/Navbar.jsx";
+import Navbar from "./containers/Navbar/Navbar.jsx";
 
 function App() {
   return (
     <div className="App">
-      <Navbar/>
+      <Navbar />
+      fkklsksl
     </div>
   );
 }
