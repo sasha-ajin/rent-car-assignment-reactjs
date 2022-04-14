@@ -1,9 +1,19 @@
 {
     "customers": [
       {
-        "id": 1,
-        "fullName": "zdravka.strahinova@gmail.com",
-        "email": "4"
+          "id": 1,
+          "fullName": "Zka Strakhinova",
+          "email": "zdravka.strahinova@gmail.com"
+        },
+        {
+          "id": 2,
+          "fullName": "Zdravka Strakhinova",
+          "email": "zdravka.strahinova@gmail.com"
+        },
+        {
+          "id": 3,
+          "fullName": "Zdravka Strakhinova",
+          "email": "zdravka.strahinova@gmail.com"
       }
     ],
     "vehicles": [
