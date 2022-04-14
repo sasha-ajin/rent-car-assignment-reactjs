@@ -34,7 +34,7 @@ const Vehicles = () => {
               <td>Table Data</td>
               <td>
                 <button
-                  class="uk-button uk-button-default uk-button-primary"
+                  className="uk-button uk-button-default uk-button-primary"
                   type="button"
                 >
                   Rent
@@ -42,7 +42,7 @@ const Vehicles = () => {
               </td>
               <td>
                 <button
-                  class="uk-button uk-button-default uk-button-secondary"
+                  className="uk-button uk-button-default uk-button-secondary"
                   type="button"
                 >
                   Update
@@ -50,7 +50,7 @@ const Vehicles = () => {
               </td>
               <td>
                 <button
-                  class="uk-button uk-button-default uk-button-danger"
+                  className="uk-button uk-button-default uk-button-danger"
                   type="button"
                 >
                   Delete

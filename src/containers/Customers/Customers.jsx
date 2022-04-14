@@ -23,7 +23,7 @@ const Customers = () => {
               <td>+</td>
               <td>
                 <button
-                  class="uk-button uk-button-default uk-button-secondary"
+                  className="uk-button uk-button-default uk-button-secondary"
                   type="button"
                 >
                   Update
@@ -31,7 +31,7 @@ const Customers = () => {
               </td>
               <td>
                 <button
-                  class="uk-button uk-button-default uk-button-danger"
+                  className="uk-button uk-button-default uk-button-danger"
                   type="button"
                 >
                   Delete
@@ -45,7 +45,7 @@ const Customers = () => {
               <td>+</td>
               <td>
                 <button
-                  class="uk-button uk-button-default uk-button-secondary"
+                  className="uk-button uk-button-default uk-button-secondary"
                   type="button"
                 >
                   Update
@@ -53,7 +53,7 @@ const Customers = () => {
               </td>
               <td>
                 <button
-                  class="uk-button uk-button-default uk-button-danger"
+                  className="uk-button uk-button-default uk-button-danger"
                   type="button"
                 >
                   Delete
