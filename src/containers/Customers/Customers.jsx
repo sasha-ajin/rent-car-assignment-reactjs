@@ -11,6 +11,8 @@ const Customers = () => {
               <th>Name</th>
               <th>Email</th>
               <th>Vip</th>
+              <th>Update</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -19,12 +21,44 @@ const Customers = () => {
               <td>Sasha Ajintarev</td>
               <td>sashaajin@gmail.com</td>
               <td>+</td>
+              <td>
+                <button
+                  class="uk-button uk-button-default uk-button-secondary"
+                  type="button"
+                >
+                  Update
+                </button>
+              </td>
+              <td>
+                <button
+                  class="uk-button uk-button-default uk-button-danger"
+                  type="button"
+                >
+                  Delete
+                </button>
+              </td>
             </tr>
             <tr>
               <td>1</td>
               <td>Sasha</td>
               <td>sashaajin@gmail.com</td>
               <td>+</td>
+              <td>
+                <button
+                  class="uk-button uk-button-default uk-button-secondary"
+                  type="button"
+                >
+                  Update
+                </button>
+              </td>
+              <td>
+                <button
+                  class="uk-button uk-button-default uk-button-danger"
+                  type="button"
+                >
+                  Delete
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>

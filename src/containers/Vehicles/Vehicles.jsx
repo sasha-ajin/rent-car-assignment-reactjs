@@ -17,6 +17,8 @@ const Vehicles = () => {
               <th>Quantity</th>
               <th>Type</th>
               <th>Rent</th>
+              <th>Update</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -35,7 +37,23 @@ const Vehicles = () => {
                   class="uk-button uk-button-default uk-button-primary"
                   type="button"
                 >
-                  Button
+                  Rent
+                </button>
+              </td>
+              <td>
+                <button
+                  class="uk-button uk-button-default uk-button-secondary"
+                  type="button"
+                >
+                  Update
+                </button>
+              </td>
+              <td>
+                <button
+                  class="uk-button uk-button-default uk-button-danger"
+                  type="button"
+                >
+                  Delete
                 </button>
               </td>
             </tr>
