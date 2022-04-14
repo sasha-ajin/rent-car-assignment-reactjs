@@ -1,7 +1,7 @@
-import Navbar from "./containers/Navbar/Navbar.jsx";
+import Navbar from "./containers/Navbar.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Customers from "./containers/Customers/Customers.jsx";
-import Vehicles from "./containers/Vehicles/Vehicles.jsx";
+import Customers from "./containers/Customers.jsx";
+import Vehicles from "./containers/Vehicles.jsx";
 
 function App() {
   return (
