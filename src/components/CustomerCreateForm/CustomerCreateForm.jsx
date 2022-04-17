@@ -20,7 +20,9 @@ const CustomerCreateForm = ({ create }) => {
           type="text"
           placeholder="Name"
           value={customer.fullName}
-          onChange={(e) => setCustomer({ ...customer, fullName: e.target.value })}
+          onChange={(e) =>
+            setCustomer({ ...customer, fullName: e.target.value })
+          }
         />
       </div>
       <div className="uk-margin">

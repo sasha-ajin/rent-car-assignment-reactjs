@@ -13,10 +13,10 @@ const Navbar = () => {
                   <Link to={"/"}>Rent-a-Car Assignment</Link>
                 </li>
                 <li>
-                <Link to={"/"}>Vehicles</Link>
+                  <Link to={"/"}>Vehicles</Link>
                 </li>
                 <li>
-                <Link to={"/customers"}>Customers</Link>
+                  <Link to={"/customers"}>Customers</Link>
                 </li>
               </ul>
             </div>
