@@ -23,6 +23,7 @@ const Table = ({ headers, row_attributes, rows, buttons }) => {
                   <button
                     className={`uk-button uk-button-default uk-button-${button.type}`}
                     type="button"
+                    onClick={() => button.action(row.id)}
                   >
                     {button.text}
                   </button>

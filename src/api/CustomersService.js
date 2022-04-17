@@ -5,4 +5,7 @@ export default class CustomerService {
     const response = await axios.get("http://localhost:4200/customers");
     return response.data;
   }
+  static async deleteById(id) {
+    await axios.delete(`http://localhost:4200/customers/${id}`);
+  }
 }
