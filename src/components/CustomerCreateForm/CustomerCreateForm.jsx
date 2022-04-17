@@ -38,6 +38,11 @@ const CustomerCreateForm = ({ create }) => {
         className="uk-button uk-button-primary uk-button-large"
         style={{ display: "flex", justifyContent: "center" }}
         onClick={createCustomer}
+        disabled={
+          customer.email.length !== 0 && customer.fullName.length !== 0
+            ? false
+            : true
+        }
       >
         Create customer
       </button>
