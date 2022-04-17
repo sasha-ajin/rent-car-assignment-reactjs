@@ -8,4 +8,7 @@ export default class CustomerService {
   static async deleteById(id) {
     await axios.delete(`http://localhost:4200/customers/${id}`);
   }
+  static async create(customer) {
+    await axios.post(`http://localhost:4200/customers`, customer);
+  }
 }
