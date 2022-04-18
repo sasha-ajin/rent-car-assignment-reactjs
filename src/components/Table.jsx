@@ -11,7 +11,6 @@ const Table = ({
   UpdateFromComponent,
 }) => {
   const [updateModal, setUpdateModal] = useState(false);
-  console.log(rows);
   return (
     <div className="uk-overflow-auto">
       <table className="uk-table  uk-table-divider">
