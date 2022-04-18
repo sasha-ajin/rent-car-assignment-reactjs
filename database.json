@@ -1,19 +1,14 @@
 {
   "customers": [
     {
-      "id": 2,
-      "fullName": "Zdravka Strakhinova",
-      "email": "zdravka.strahinova@gmail.com"
-    },
-    {
       "email": "sss",
-      "fullName": "sss",
-      "id": 1650238183794
+      "fullName": "aaa",
+      "id": 1650290213947
     },
     {
-      "email": "aa",
-      "fullName": "ss",
-      "id": 1650238212294
+      "email": "f",
+      "fullName": "ff",
+      "id": 1650291013542
     }
   ],
   "vehicles": [

@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 
-const CustomerCreateForm = ({ create }) => {
+const CustomerForm = ({ action, textSubmit, isCustomerWithId, id }) => {
   const [customer, setCustomer] = useState({ fullName: "", email: "" });
-  const createCustomer = (e) => {
+  const actionCustomer = (e) => {
     e.preventDefault();
     const newCustomer = {
       email: customer.email,
       fullName: customer.fullName,
-      id: Date.now(),
     };
-    create(newCustomer);
+    if (!isCustomerWithId) {
+      newCustomer.id = Date.now();
+      action(newCustomer);
+    } else {
+      action(newCustomer, id);
+    }
     setCustomer({ fullName: "", email: "" });
   };
   return (
@@ -37,17 +41,17 @@ const CustomerCreateForm = ({ create }) => {
       <button
         className="uk-button uk-button-primary uk-button-large"
         style={{ display: "flex", justifyContent: "center" }}
-        onClick={createCustomer}
+        onClick={actionCustomer}
         disabled={
           customer.email.length !== 0 && customer.fullName.length !== 0
             ? false
             : true
         }
       >
-        Create customer
+        {textSubmit}
       </button>
     </div>
   );
 };
 
-export default CustomerCreateForm;
+export default CustomerForm;

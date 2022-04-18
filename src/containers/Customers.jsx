@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CustomerService from "../api/CustomersService";
 import Table from "../components/Table.jsx";
 import MyModal from "../components/MyModal/MyModal.jsx";
-import CustomerCreateForm from "../components/CustomerCreateForm/CustomerCreateForm.jsx";
+import CustomerForm from "../components/CustomerForm/CustomerForm.jsx";
 
 const Customers = () => {
   const [customers, setCustomers] = useState([]);
@@ -15,25 +15,26 @@ const Customers = () => {
     setCustomers(response);
   }
   async function deleteCustomerById(id) {
-    await CustomerService.deleteById(id);
+    await CustomerService.delete(id);
     setCustomers(customers.filter((c) => c.id !== id));
   }
   async function createCustomer(newCustomer) {
     await CustomerService.create(newCustomer);
     setCustomers([...customers, newCustomer]);
   }
-  const headers = ["", "Name", "Email", "Update", "Delete"];
+  async function upadteCustomer(newCustomer, id) {
+    await CustomerService.update(newCustomer, id);
+    newCustomer.id = id;
+    setCustomers(
+      customers.map((c) => {
+        return c.id === id ? { ...newCustomer } : c;
+      })
+    );
+  }
+  const headers = ["Name", "Email", "Update", "Delete"];
   const attributes = ["fullName", "email"];
-  const buttons = [
-    { text: "Update", type: "secondary" },
-    {
-      text: "Delete",
-      type: "danger",
-      action: deleteCustomerById,
-    },
-  ];
   return (
-    <div className="container table-customers-vehicles">
+    <div className="container customers-vehicles">
       <div className="create-buttom-container">
         <button
           className="uk-button uk-button-primary uk-button-large create-button"
@@ -42,7 +43,11 @@ const Customers = () => {
           Create customer
         </button>
         <MyModal visible={modal} setVisible={setModal}>
-          <CustomerCreateForm create={createCustomer} />
+          <CustomerForm
+            action={createCustomer}
+            textSubmit="Create customer"
+            isCustomerWithId={false}
+          />
         </MyModal>
       </div>
       {customers.length !== 0 ? (
@@ -50,15 +55,12 @@ const Customers = () => {
           headers={headers}
           row_attributes={attributes}
           rows={customers}
-          buttons={buttons}
+          deleteRow={deleteCustomerById}
+          UpdateFromComponent={CustomerForm}
+          updateRow={upadteCustomer}
         />
       ) : (
-        <h1
-          className="uk-heading-large"
-          style={{ display: "flex", justifyContent: "center" }}
-        >
-          No Customers
-        </h1>
+        <h1 className="uk-heading-large centred">No Customers</h1>
       )}
     </div>
   );

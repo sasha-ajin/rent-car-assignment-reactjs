@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import MyModal from "./MyModal/MyModal.jsx";
 
-const Table = ({ headers, row_attributes, rows, buttons }) => {
+const Table = ({
+  headers,
+  row_attributes,
+  rows,
+  buttons = [],
+  updateRow,
+  deleteRow,
+  UpdateFromComponent,
+}) => {
+  const [updateModal, setUpdateModal] = useState(false);
+  console.log(rows);
   return (
     <div className="uk-overflow-auto">
       <table className="uk-table  uk-table-divider">
         <thead>
           <tr>
+            <th></th>
             {headers.map((header, index) => (
               <th key={index}>{header}</th>
             ))}
@@ -29,6 +41,32 @@ const Table = ({ headers, row_attributes, rows, buttons }) => {
                   </button>
                 </td>
               ))}
+              <td>
+                <button
+                  className={`uk-button uk-button-default uk-button-secondary`}
+                  type="button"
+                  onClick={() => setUpdateModal(true)}
+                >
+                  Update
+                </button>
+                <MyModal visible={updateModal} setVisible={setUpdateModal}>
+                  <UpdateFromComponent
+                    isCustomerWithId={true}
+                    textSubmit="Update"
+                    id={row.id}
+                    action={updateRow}
+                  />
+                </MyModal>
+              </td>
+              <td>
+                <button
+                  className={`uk-button uk-button-default uk-button-danger`}
+                  type="button"
+                  onClick={() => deleteRow(row.id)}
+                >
+                  Delete
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

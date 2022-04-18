@@ -1,12 +1,16 @@
 body {
   margin: 0px;
 }
-.table-customers-vehicles {
+.customers-vehicles {
   margin-top: 7px;
 }
 .create-buttom-container {
   margin-top: 20px;
   margin-bottom: 7px;
+  display: flex;
+  justify-content: center;
+}
+.centred {
   display: flex;
   justify-content: center;
 }
