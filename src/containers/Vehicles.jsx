@@ -1,65 +1,80 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import VehiclesService from "../api/VehiclesService";
+import Table from "../components/Table.jsx";
+import MyModal from "../components/MyModal/MyModal.jsx";
+import VehicleForm from "../components/VehicleForm/VehicleForm.jsx";
 
 const Vehicles = () => {
+  const [modal, setModal] = useState(false);
+  const [vehicles, setVehicles] = useState([]);
+  useEffect(() => {
+    fetchVehicles();
+  }, []);
+  async function fetchVehicles() {
+    const response = await VehiclesService.getAll();
+    setVehicles(response);
+  }
+  async function deleteVehicleById(id) {
+    await VehiclesService.delete(id);
+    setVehicles(vehicles.filter((c) => c.id !== id));
+  }
+  async function upadteVehicle(id) {
+    console.log("update");
+  }
+  async function createVehicle(vehicle) {
+    await VehiclesService.create(vehicle);
+    setVehicles([...vehicles, vehicle]);
+    console.log("create");
+  }
+  const headers = [
+    "Brand",
+    "Model",
+    "Year",
+    "Fuel Type",
+    "Seats Number",
+    "One-Day-Price",
+    "Quantity",
+    "Vehicle Type",
+  ];
+  const attributes = [
+    "brand",
+    "model",
+    "constructionYear",
+    "fuelType",
+    "seatsNumber",
+    "oneDayEuroPrice",
+    "quantity",
+    "vehicleTypes",
+  ];
   return (
-    <div className="container table-customers-vehicles">
-      <div className="uk-overflow-auto">
-        <table className="uk-table uk-table-small uk-table-divider">
-          <thead>
-            <tr>
-              <th></th>
-              <th>brand</th>
-              <th>model</th>
-              <th>Year</th>
-              <th>Fuel </th>
-              <th>Seats</th>
-              <th>Price-a-day</th>
-              <th>Quantity</th>
-              <th>Type</th>
-              <th>Rent</th>
-              <th>Update</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Table Data</td>
-              <td>Table Data</td>
-              <td>Table Data</td>
-              <td>Table Data</td>
-              <td>Table Data</td>
-              <td>Table Data</td>
-              <td>Table Data</td>
-              <td>Table Data</td>
-              <td>
-                <button
-                  className="uk-button uk-button-default uk-button-primary"
-                  type="button"
-                >
-                  Rent
-                </button>
-              </td>
-              <td>
-                <button
-                  className="uk-button uk-button-default uk-button-secondary"
-                  type="button"
-                >
-                  Update
-                </button>
-              </td>
-              <td>
-                <button
-                  className="uk-button uk-button-default uk-button-danger"
-                  type="button"
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    <div className="container Vehicles-vehicles">
+      <div className="create-buttom-container">
+        <button
+          className="uk-button uk-button-primary uk-button-large create-button"
+          onClick={() => setModal(true)}
+        >
+          Add Vehicle
+        </button>
+        <MyModal visible={modal} setVisible={setModal}>
+          <VehicleForm
+            textSubmit="Add Vehicle"
+            isVehicle={false}
+            action={createVehicle}
+          />
+        </MyModal>
       </div>
+      {vehicles.length !== 0 ? (
+        <Table
+          headers={headers}
+          row_attributes={attributes}
+          rows={vehicles}
+          deleteRow={deleteVehicleById}
+          UpdateFromComponent={VehicleForm}
+          updateRow={upadteVehicle}
+        />
+      ) : (
+        <h1 className="uk-heading-large centred">No vehicles</h1>
+      )}
     </div>
   );
 };
