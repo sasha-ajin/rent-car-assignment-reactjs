@@ -13,16 +13,14 @@ const VehicleForm = ({ action, textSubmit, isVehicle, id }) => {
   };
   const [vehicle, setVehicle] = useState(defaultVehicle);
   const actionVehicle = (e) => {
-    console.log(vehicle);
     if (!isVehicle) {
       vehicle.id = Date.now();
-      action(vehicle);
+      action(vehicle,id);
     } else {
-      action(vehicle, id);
+        action(vehicle);
     }
     setVehicle(defaultVehicle);
   };
-
   return (
     <div>
       <div className="uk-margin">

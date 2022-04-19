@@ -11,4 +11,7 @@ export default class VehiclesService {
   static async create(vehicle) {
     await axios.post(`http://localhost:4200/vehicles`, vehicle);
   }
+  static async update(vehicle, id) {
+    await axios.put(`http://localhost:4200/vehicles/${id}`, vehicle);
+  }
 }

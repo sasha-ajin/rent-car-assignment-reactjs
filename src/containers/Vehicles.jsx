@@ -18,8 +18,14 @@ const Vehicles = () => {
     await VehiclesService.delete(id);
     setVehicles(vehicles.filter((c) => c.id !== id));
   }
-  async function upadteVehicle(id) {
-    console.log("update");
+  async function upadteVehicle(newVehicle, id) {
+    await VehiclesService.update(newVehicle, id);
+    newVehicle.id = id;
+    setVehicles(
+      vehicles.map((v) => {
+        return v.id === id ? { ...newVehicle } : v;
+      })
+    );
   }
   async function createVehicle(vehicle) {
     await VehiclesService.create(vehicle);
