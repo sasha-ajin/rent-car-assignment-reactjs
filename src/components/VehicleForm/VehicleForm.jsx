@@ -15,9 +15,9 @@ const VehicleForm = ({ action, textSubmit, isVehicle, id }) => {
   const actionVehicle = (e) => {
     if (!isVehicle) {
       vehicle.id = Date.now();
-      action(vehicle,id);
+      action(vehicle, id);
     } else {
-        action(vehicle);
+      action(vehicle);
     }
     setVehicle(defaultVehicle);
   };
@@ -109,6 +109,18 @@ const VehicleForm = ({ action, textSubmit, isVehicle, id }) => {
         className="uk-button uk-button-primary uk-button-large"
         style={{ display: "flex", justifyContent: "center" }}
         onClick={actionVehicle}
+        disabled={
+          vehicle.brand.length !== 0 &&
+          vehicle.model.length !== 0 &&
+          vehicle.constructionYear.length !== 0 &&
+          vehicle.fuelType.length !== 0 &&
+          vehicle.seatsNumber.length !== 0 &&
+          vehicle.oneDayEuroPrice.length !== 0 &&
+          vehicle.quantity.length !== 0 &&
+          vehicle.vehicleTypes.length !== 0
+            ? false
+            : true
+        }
       >
         {textSubmit}
       </button>
