@@ -5,12 +5,17 @@ const Table = ({
   headers,
   row_attributes,
   rows,
-  buttons = [],
+  additionalButton,
   updateRow,
   deleteRow,
-  UpdateFromComponent,
+  UpdateFormComponent,
 }) => {
   const [updateModal, setUpdateModal] = useState(false);
+  const [additionalButtonModal, setAdditionalButtonModal] = useState(false);
+  var isAdditionalButton;
+  if (additionalButton !== undefined) {
+    isAdditionalButton = true;
+  } else isAdditionalButton = false;
   return (
     <div className="uk-overflow-auto">
       <table className="uk-table  uk-table-divider">
@@ -20,6 +25,9 @@ const Table = ({
             {headers.map((header, index) => (
               <th key={index}>{header}</th>
             ))}
+            {isAdditionalButton && <th>{additionalButton.text}</th>}
+            <th>Update</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -29,17 +37,20 @@ const Table = ({
               {row_attributes.map((row_attribute) => (
                 <td key={row_attribute}>{row[row_attribute]}</td>
               ))}
-              {buttons.map((button) => (
-                <td key={button.text}>
+              {isAdditionalButton && (
+                <td>
                   <button
-                    className={`uk-button uk-button-default uk-button-${button.type}`}
+                    className={`uk-button uk-button-default uk-button-${additionalButton.type}`}
                     type="button"
-                    onClick={() => button.action(row.id)}
+                    onClick={() => setAdditionalButtonModal(true)}
                   >
-                    {button.text}
+                    {additionalButton.text}
                   </button>
+                  <MyModal visible={additionalButtonModal} setVisible={setAdditionalButtonModal}>
+                    <additionalButton.modal id={row.id}/>
+                  </MyModal>
                 </td>
-              ))}
+              )}
               <td>
                 <button
                   className={`uk-button uk-button-default uk-button-secondary`}
@@ -49,7 +60,7 @@ const Table = ({
                   Update
                 </button>
                 <MyModal visible={updateModal} setVisible={setUpdateModal}>
-                  <UpdateFromComponent
+                  <UpdateFormComponent
                     isCustomerWithId={true}
                     textSubmit="Update"
                     id={row.id}

@@ -31,7 +31,7 @@ const Customers = () => {
       })
     );
   }
-  const headers = ["Name", "Email", "Update", "Delete"];
+  const headers = ["Name", "Email"];
   const attributes = ["fullName", "email"];
   return (
     <div className="container customers-vehicles">
@@ -56,7 +56,7 @@ const Customers = () => {
           row_attributes={attributes}
           rows={customers}
           deleteRow={deleteCustomerById}
-          UpdateFromComponent={CustomerForm}
+          UpdateFormComponent={CustomerForm}
           updateRow={upadteCustomer}
         />
       ) : (

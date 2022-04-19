@@ -3,6 +3,7 @@ import VehiclesService from "../api/VehiclesService";
 import Table from "../components/Table.jsx";
 import MyModal from "../components/MyModal/MyModal.jsx";
 import VehicleForm from "../components/VehicleForm/VehicleForm.jsx";
+import RentForm from "../components/RentForm/RentForm.jsx";
 
 const Vehicles = () => {
   const [modal, setModal] = useState(false);
@@ -40,8 +41,6 @@ const Vehicles = () => {
     "One-Day-Price",
     "Quantity",
     "Vehicle Type",
-    "Update",
-    "Delete",
   ];
   const attributes = [
     "brand",
@@ -53,7 +52,7 @@ const Vehicles = () => {
     "quantity",
     "vehicleTypes",
   ];
-  const buttons = [{ text: "Rent", type: "primary" }];
+  const additionalButton = { text: "Rent", type: "primary", modal: RentForm };
   return (
     <div className="container Vehicles-vehicles">
       <div className="create-buttom-container">
@@ -73,12 +72,12 @@ const Vehicles = () => {
       </div>
       {vehicles.length !== 0 ? (
         <Table
-          buttons={buttons}
+          additionalButton={additionalButton}
           headers={headers}
           row_attributes={attributes}
           rows={vehicles}
           deleteRow={deleteVehicleById}
-          UpdateFromComponent={VehicleForm}
+          UpdateFormComponent={VehicleForm}
           updateRow={upadteVehicle}
         />
       ) : (
