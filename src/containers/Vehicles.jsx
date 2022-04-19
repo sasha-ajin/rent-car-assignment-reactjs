@@ -30,7 +30,6 @@ const Vehicles = () => {
   async function createVehicle(vehicle) {
     await VehiclesService.create(vehicle);
     setVehicles([...vehicles, vehicle]);
-    console.log("create");
   }
   const headers = [
     "Brand",
@@ -41,6 +40,8 @@ const Vehicles = () => {
     "One-Day-Price",
     "Quantity",
     "Vehicle Type",
+    "Update",
+    "Delete",
   ];
   const attributes = [
     "brand",
@@ -52,6 +53,7 @@ const Vehicles = () => {
     "quantity",
     "vehicleTypes",
   ];
+  const buttons = [{ text: "Rent", type: "primary" }];
   return (
     <div className="container Vehicles-vehicles">
       <div className="create-buttom-container">
@@ -71,6 +73,7 @@ const Vehicles = () => {
       </div>
       {vehicles.length !== 0 ? (
         <Table
+          buttons={buttons}
           headers={headers}
           row_attributes={attributes}
           rows={vehicles}
