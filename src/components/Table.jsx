@@ -47,7 +47,7 @@ const Table = ({
                     {additionalButton.text}
                   </button>
                   <MyModal visible={additionalButtonModal} setVisible={setAdditionalButtonModal}>
-                    <additionalButton.modal id={row.id}/>
+                    <additionalButton.modal id={row.id} vehicle={row}/>
                   </MyModal>
                 </td>
               )}
