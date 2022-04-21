@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import CustomerService from "../../api/CustomersService";
+import RentEventsService from "../../api/RentEventsService";
 
 const RentForm = ({ vehicle }) => {
   const [customer, setCustomer] = useState({ fullName: "", email: "" });
   const [customers, setCustomers] = useState([]);
   const [rentPrice, setRentPrice] = useState(vehicle.oneDayEuroPrice);
+  const [rentDays, setRentDays] = useState(1);
   useEffect(() => {
     getData();
   }, []);
@@ -13,20 +15,35 @@ const RentForm = ({ vehicle }) => {
     setCustomers(response_customers);
   }
   const checkPrice = (days) => {
-    if (parseInt(days) === 1) setRentPrice(vehicle.oneDayEuroPrice);
-    else if (parseInt(days) === 3)
+    const days_ = parseInt(days);
+    setRentDays(days_);
+    if (days_ === 1) setRentPrice(vehicle.oneDayEuroPrice);
+    else if (days_ === 3)
       setRentPrice((vehicle.oneDayEuroPrice * 3 * 0.95).toFixed(2));
-    else if (parseInt(days) === 5)
+    else if (days_ === 5)
       setRentPrice((vehicle.oneDayEuroPrice * 5 * 0.93).toFixed(2));
-    else if (parseInt(days) >= 10)
-      setRentPrice((vehicle.oneDayEuroPrice * days * 0.9).toFixed(2));
+    else if (days_ >= 10)
+      setRentPrice((vehicle.oneDayEuroPrice * days_ * 0.9).toFixed(2));
   };
-  const rentAction = () => {
+  const addDays = (days, date) => {
+    const date_ = new Date(date.valueOf());
+    date_.setDate(date_.getDate() + days);
+    return date_;
+  };
+  async function rentAction() {
     const customerId = customers.find(
       (c) => c.fullName === customer.fullName && c.email === customer.email
     ).id;
-    console.log(parseFloat(rentPrice), vehicle.id, customerId);
-  };
+    const date = new Date(Date.now());
+    await RentEventsService.create({
+      id: Date.now(),
+      customer: customerId,
+      vehicle: vehicle.id,
+      startDate: date,
+      endDate: addDays(rentDays, date),
+      price: parseFloat(rentPrice),
+    });
+  }
   return (
     <div>
       <div className="uk-margin">
