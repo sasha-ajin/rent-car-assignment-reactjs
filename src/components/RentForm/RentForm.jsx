@@ -43,7 +43,7 @@ const RentForm = ({ vehicle }) => {
       endDate: addDays(rentDays, date),
       price: parseFloat(rentPrice),
     });
-    window.location.reload()
+    window.location.reload();
   }
   return (
     <div>
