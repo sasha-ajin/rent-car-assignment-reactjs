@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CustomerService from "../api/CustomersService";
-import Table from "../components/Table.jsx";
+import Table from "../components/Table/Table.jsx";
 import MyModal from "../components/MyModal/MyModal.jsx";
 import CustomerForm from "../components/CustomerForm/CustomerForm.jsx";
 

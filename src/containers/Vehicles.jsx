@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import VehiclesService from "../api/VehiclesService";
-import Table from "../components/Table.jsx";
+import Table from "../components/Table/Table.jsx";
 import MyModal from "../components/MyModal/MyModal.jsx";
 import VehicleForm from "../components/VehicleForm/VehicleForm.jsx";
 import RentForm from "../components/RentForm/RentForm.jsx";

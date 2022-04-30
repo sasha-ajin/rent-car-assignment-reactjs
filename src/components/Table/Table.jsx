@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MyModal from "./MyModal/MyModal.jsx";
+import MyModal from "../MyModal/MyModal.jsx";
 
 const Table = ({
   headers,
