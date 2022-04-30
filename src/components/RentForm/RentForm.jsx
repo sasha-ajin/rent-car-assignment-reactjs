@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import CustomerService from "../../api/CustomersService";
 import RentEventsService from "../../api/RentEventsService";
 
-const RentForm = ({ vehicle }) => {
+const RentForm = ({ row }) => {
   const [customer, setCustomer] = useState({ fullName: "", email: "" });
   const [customers, setCustomers] = useState([]);
-  const [rentPrice, setRentPrice] = useState(vehicle.oneDayEuroPrice);
+  const [rentPrice, setRentPrice] = useState(row.oneDayEuroPrice);
   const [rentDays, setRentDays] = useState(1);
   useEffect(() => {
     getData();
@@ -17,13 +17,13 @@ const RentForm = ({ vehicle }) => {
   const checkPrice = (days) => {
     const days_ = parseInt(days);
     setRentDays(days_);
-    if (days_ === 1) setRentPrice(vehicle.oneDayEuroPrice);
+    if (days_ === 1) setRentPrice(row.oneDayEuroPrice);
     else if (days_ === 3)
-      setRentPrice((vehicle.oneDayEuroPrice * 3 * 0.95).toFixed(2));
+      setRentPrice((row.oneDayEuroPrice * 3 * 0.95).toFixed(2));
     else if (days_ === 5)
-      setRentPrice((vehicle.oneDayEuroPrice * 5 * 0.93).toFixed(2));
+      setRentPrice((row.oneDayEuroPrice * 5 * 0.93).toFixed(2));
     else if (days_ >= 10)
-      setRentPrice((vehicle.oneDayEuroPrice * days_ * 0.9).toFixed(2));
+      setRentPrice((row.oneDayEuroPrice * days_ * 0.9).toFixed(2));
   };
   const addDays = (days, date) => {
     const date_ = new Date(date.valueOf());
@@ -38,7 +38,7 @@ const RentForm = ({ vehicle }) => {
     await RentEventsService.create({
       id: Date.now(),
       customer: customerId,
-      vehicle: vehicle.id,
+      vehicle: row.id,
       startDate: date,
       endDate: addDays(rentDays, date),
       price: parseFloat(rentPrice),
