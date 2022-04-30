@@ -1,9 +1,11 @@
 import axios from "axios";
 import RentEventsService from "./RentEventsService";
 
+const apiUrl = "http://localhost:4200/vehicles";
+
 export default class VehiclesService {
   static async getAll() {
-    const response_vehicles = await axios.get("http://localhost:4200/vehicles");
+    const response_vehicles = await axios.get(`${apiUrl}`);
     const response_rent_events = await RentEventsService.getAll();
     var date = new Date().toISOString();
     response_rent_events.forEach((rentalEvent) =>
@@ -19,12 +21,12 @@ export default class VehiclesService {
     return response_vehicles.data;
   }
   static async delete(id) {
-    await axios.delete(`http://localhost:4200/vehicles/${id}`);
+    await axios.delete(`${apiUrl}/${id}`);
   }
   static async create(vehicle) {
-    await axios.post(`http://localhost:4200/vehicles`, vehicle);
+    await axios.post(`${apiUrl}`, vehicle);
   }
   static async update(vehicle, id) {
-    await axios.put(`http://localhost:4200/vehicles/${id}`, vehicle);
+    await axios.put(`${apiUrl}/${id}`, vehicle);
   }
 }
