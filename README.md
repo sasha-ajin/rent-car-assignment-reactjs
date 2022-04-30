@@ -6,4 +6,3 @@ This ReactJS project was created as a homework at Plovdiv University
 -   [Task](docs/task.md)
 
 -   [Installation and running project](docs/installation_running.md)
-
