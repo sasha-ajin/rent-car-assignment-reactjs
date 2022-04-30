@@ -84,7 +84,4 @@ VIP customers and get a discount of 15%.
 Application source code
 
 You must submit a link with your deliverables. The link can be either for source control hosting (GitHub,
-GitLab, Bitbucket, etc.) or cloud storage (Google Drive, OneDrive, pCloud, etc.). Send/upload only the
-source code, without node_modules to one of the listed providers above and mail me the shareable link
-to todor.ivanov@uni-plovdiv.bg before the end of week 9 (04 th of June).
-If you have any additional questions – ping me on email/Facebook/Google.
+GitLab, Bitbucket, etc.) or cloud storage (Google Drive, OneDrive, pCloud, etc.).
