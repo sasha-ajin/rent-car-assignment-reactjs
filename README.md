@@ -7,4 +7,3 @@ This ReactJS project was created as a homework at Plovdiv University
 
 -   [Installation and running project](docs/installation_running.md)
 
--   [Project preview](docs/preview.md)
