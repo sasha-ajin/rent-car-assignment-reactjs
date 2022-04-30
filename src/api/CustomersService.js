@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = "http://localhost:4200/customers";
+const apiUrl = "customers";
 
 export default class CustomerService {
   static async getAll() {

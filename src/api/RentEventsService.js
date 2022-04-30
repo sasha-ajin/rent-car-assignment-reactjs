@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = "http://localhost:4200/rentalEvents";
+const apiUrl = "rentalEvents";
 
 export default class RentEventsService {
   static async getAll() {

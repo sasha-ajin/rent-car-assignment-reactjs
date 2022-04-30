@@ -1,7 +1,7 @@
 import axios from "axios";
 import RentEventsService from "./RentEventsService";
 
-const apiUrl = "http://localhost:4200/vehicles";
+const apiUrl = "vehicles";
 
 export default class VehiclesService {
   static async getAll() {
